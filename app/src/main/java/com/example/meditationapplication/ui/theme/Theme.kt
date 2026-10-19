@@ -1,58 +1,81 @@
 package com.example.meditationapplication.ui.theme
 
-import android.app.Activity
-import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Shapes
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
-
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
+// Індикатор активної вкладки та обраний чип у Material 3 використовують secondaryContainer,
+// тому він дорівнює primaryContainer.
+private val LightColors = lightColorScheme(
+    primary = Primary,
     onPrimary = Color.White,
+    primaryContainer = PrimaryContainer,
+    onPrimaryContainer = OnSurface,
+    secondary = Primary,
     onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    secondaryContainer = PrimaryContainer,
+    onSecondaryContainer = OnSurface,
+    background = Background,
+    onBackground = OnSurface,
+    surface = Surface,
+    onSurface = OnSurface,
+    surfaceVariant = Color(0xFFE6E8F0),
+    onSurfaceVariant = OnSurfaceVariant,
+    surfaceContainerLowest = Surface,
+    surfaceContainerLow = Surface,
+    surfaceContainer = Surface,
+    surfaceContainerHigh = Color(0xFFF1F2F8),
+    surfaceContainerHighest = Color(0xFFE6E8F0),
+    outline = Outline,
+    outlineVariant = Outline,
 )
 
+private val DarkColors = darkColorScheme(
+    primary = PrimaryDark,
+    onPrimary = Color(0xFF1A2050),
+    primaryContainer = PrimaryContainerDark,
+    onPrimaryContainer = OnSurfaceDark,
+    secondary = PrimaryDark,
+    onSecondary = Color(0xFF1A2050),
+    secondaryContainer = PrimaryContainerDark,
+    onSecondaryContainer = OnSurfaceDark,
+    background = BackgroundDark,
+    onBackground = OnSurfaceDark,
+    surface = SurfaceDark,
+    onSurface = OnSurfaceDark,
+    surfaceVariant = Color(0xFF2A2E40),
+    onSurfaceVariant = OnSurfaceVariantDark,
+    surfaceContainerLowest = SurfaceDark,
+    surfaceContainerLow = SurfaceDark,
+    surfaceContainer = SurfaceDark,
+    surfaceContainerHigh = Color(0xFF262A3B),
+    surfaceContainerHighest = Color(0xFF2E3245),
+    outline = OutlineDark,
+    outlineVariant = OutlineDark,
+)
+
+/** Заокруглення: чипи — 8 dp, картки — 16 dp, обкладинка в плеєрі — 24 dp. */
+private val AppShapes = Shapes(
+    small = RoundedCornerShape(8.dp),
+    medium = RoundedCornerShape(16.dp),
+    large = RoundedCornerShape(24.dp),
+)
+
+/** Тема додатка. Кольори не залежать від шпалер (без dynamic color) — лише світла/темна схема. */
 @Composable
 fun MeditationApplicationTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
+    darkTheme: Boolean,
+    content: @Composable () -> Unit,
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = if (darkTheme) DarkColors else LightColors,
         typography = Typography,
-        content = content
+        shapes = AppShapes,
+        content = content,
     )
 }

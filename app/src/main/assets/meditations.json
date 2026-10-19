@@ -1,0 +1,47 @@
+[
+  {
+    "id": "calm_evening",
+    "title": "Спокійний вечір",
+    "description": "Коротка розслаблююча практика перед сном: дихання та сканування тіла.",
+    "category": "SLEEP",
+    "durationSec": 600,
+    "audioFile": "audio/calm_evening.mp3",
+    "imageFile": "images/calm_evening.webp"
+  },
+  {
+    "id": "deep_sleep",
+    "title": "Глибокий сон",
+    "description": "Тривала практика глибокого розслаблення, яка допомагає відпустити думки та спокійно заснути.",
+    "category": "SLEEP",
+    "durationSec": 900,
+    "audioFile": "audio/deep_sleep.mp3",
+    "imageFile": "images/deep_sleep.webp"
+  },
+  {
+    "id": "stress_relief",
+    "title": "Зняття напруги",
+    "description": "Практика для зняття м’язової та емоційної напруги після насиченого дня.",
+    "category": "STRESS",
+    "durationSec": 600,
+    "audioFile": "audio/stress_relief.mp3",
+    "imageFile": "images/stress_relief.webp"
+  },
+  {
+    "id": "focus_5",
+    "title": "5 хвилин фокусу",
+    "description": "Коротка вправа на концентрацію уваги перед роботою чи навчанням.",
+    "category": "FOCUS",
+    "durationSec": 300,
+    "audioFile": "audio/focus_5.mp3",
+    "imageFile": "images/focus_5.webp"
+  },
+  {
+    "id": "breathing_478",
+    "title": "Дихання 4-7-8",
+    "description": "Дихальна вправа для швидкого заспокоєння.",
+    "category": "BREATHING",
+    "durationSec": 300,
+    "audioFile": "audio/breathing_478.mp3",
+    "imageFile": "images/breathing_478.webp"
+  }
+]
